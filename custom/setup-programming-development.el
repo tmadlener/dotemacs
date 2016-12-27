@@ -117,5 +117,14 @@
 						      ("* ||\n[i]" "RET")))
   )
 
+;; open every .h file in c++-mode (since I mostly deal with c++ this should be a reasonable default)
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+;; set indentation of shell scripts
+(setq sh-basic-offset 2
+      sh-indentation 2
+      sh-indent-for-case-label 0
+      sh-indent-for-case-alt '+)
+
 (provide 'setup-programming-development)
 ;;; setup-programming-development.el ends here

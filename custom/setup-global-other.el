@@ -65,5 +65,17 @@
  )
 
 
+;; highlight-symbol package for highlighting symobls at pointn and cycling through them
+(use-package highlight-symbol
+  :ensure t
+  :init
+  (require 'highlight-symbol)
+  (setq highlight-symbol-mode t)
+  (global-set-key (kbd "C-<f3>") 'highlight-symbol)
+  (global-set-key (kbd "C-<f2>") 'highlight-symbol-next)
+  (global-set-key (kbd "C-<f4>") 'highlight-symbol-prev)
+  (global-set-key (kbd "M-s h d") 'highlight-symbol-remove-all)
+  )
+
 (provide 'setup-global-other)
 ;;; setup-global-other.el ends here
