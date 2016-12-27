@@ -8,6 +8,8 @@ recentf
 # misc other
 auto-save-list
 network-security.data
+places
+semanticdb
 
 # backup (tilde) files
 *~
