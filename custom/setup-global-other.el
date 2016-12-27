@@ -1,0 +1,69 @@
+;;; setup-global --- Summary
+;;; Commentary:
+;; setup file for things that are globally used but boil down to basically one-liners
+;; on which separate files are somewhat wasted
+
+;;; Code:
+;; update changes on file on disk to the current buffer
+(global-auto-revert-mode t)
+
+;; change large file warning threshold to 100 MB
+(setq large-file-warning-threshold 100000000)
+
+;; collect all backups of files in one central directory
+(defvar backup-directory "~/.backup.emacs")
+(if (not (file-exists-p backup-directory))
+    (make-directory backup-directory t))
+;; backup settings
+(setq
+ make-backup-files t ; backup a file the first time it is saved
+ backup-directory-alist `((".*" . ,backup-directory)) ; save backup files in defined directory
+ backup-by-copying t ; copy current file into backup dir
+ version-control t ; version number of backup files
+ delete-old-versions 6 ; oldest version to keep when a new numbered backup is made
+ kept-new-versions 9 ; newest versions to keep when a new numbered backup is made
+ auto-save-default t ; auto-save every buffer that visits a file
+ auto-save-timeout 30 ; seconds idle before auto-save
+ auto-save-interval 200 ; number of keystrokes between autosaves
+ )
+
+;; automatically refresh dired buffer on changes (on disk)
+(add-hook 'dired-mode-hook 'auto-revert-mode)
+
+;; start garbage collection every 100 s to improve emacs performance
+(setq gc-cons-threshold 100000000)
+
+;; saveplace remembers the location in a file when saving
+(require 'saveplace)
+(toggle-save-place-globally 1)
+
+;; go-to-address-mode, should make URLs clickable in a buffer
+(add-hook 'prog-mode-hook 'goto-address-mode)
+(add-hook 'text-mode-hook 'goto-address-mode)
+
+;; enable flyspell in text mode
+(add-hook 'text-mode-hook 'flyspell-mode)
+
+(setq global-mark-ring-max 5000 ;; increase mark ring capacity
+      mark-ring-max 5000
+      mode-require-final-newline t ;; add newline to end of file
+      )
+
+;; set variables concerning encoding
+;; set variables concerning encoding
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-language-environment "UTF-8")
+(prefer-coding-system 'utf-8)
+
+(setq-default indent-tabs-mode nil) ;; prevent indentation from inserting tabs
+(delete-selection-mode 1) ;; replace selection when typing instead of inserting at point
+(global-set-key (kbd "RET") 'newline-and-indent) ;; indent on newline automatically
+
+(setq
+ kill-ring-max 5000 ;; increase kill-ring capacity
+ )
+
+
+(provide 'setup-global-other)
+;;; setup-global-other.el ends here

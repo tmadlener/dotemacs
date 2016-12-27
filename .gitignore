@@ -1,0 +1,16 @@
+# ignore package directories
+packages_git
+elpa
+
+# ignore recent file list
+recentf
+
+# misc other
+auto-save-list
+network-security.data
+
+# backup (tilde) files
+*~
+
+# ede generic projects
+ede-projects.el
