@@ -72,8 +72,8 @@
   (require 'highlight-symbol)
   (setq highlight-symbol-mode t)
   (global-set-key (kbd "C-<f3>") 'highlight-symbol)
-  (global-set-key (kbd "C-<f2>") 'highlight-symbol-next)
-  (global-set-key (kbd "C-<f4>") 'highlight-symbol-prev)
+  (global-set-key (kbd "C-<f4>") 'highlight-symbol-next)
+  (global-set-key (kbd "C-<f2>") 'highlight-symbol-prev)
   (global-set-key (kbd "M-s h d") 'highlight-symbol-remove-all)
   )
 

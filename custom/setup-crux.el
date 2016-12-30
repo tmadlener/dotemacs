@@ -22,6 +22,9 @@
 
   ;; clean up the buffer before saving (indentation and whitespace cleanup)
   (global-set-key (kbd "C-c n") #'crux-cleanup-buffer-or-region)
+  ;; not crux, but still a useful key-binding as
+  ;; indenting can be time consuming on large buffers
+  (global-set-key (kbd "C-c w") 'whitespace-cleanup)
 
   ;; duplicating lines (and optionally commenting them)
   (global-set-key (kbd "C-c d") #'crux-duplicate-current-line-or-region)
