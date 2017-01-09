@@ -10,6 +10,8 @@ auto-save-list
 network-security.data
 places
 semanticdb
+tramp
+bookmarks
 
 # backup (tilde) files
 *~

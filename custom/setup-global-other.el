@@ -7,6 +7,9 @@
 ;; update changes on file on disk to the current buffer
 (global-auto-revert-mode t)
 
+;; also automatically update files accessed via tramp
+(setq auto-revert-remote-files t)
+
 ;; change large file warning threshold to 100 MB
 (setq large-file-warning-threshold 100000000)
 
