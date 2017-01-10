@@ -10,6 +10,9 @@
 ;; also automatically update files accessed via tramp
 (setq auto-revert-remote-files t)
 
+;; setup ssh as default mode for tramp
+(setq tramp-default-method "ssh")
+
 ;; change large file warning threshold to 100 MB
 (setq large-file-warning-threshold 100000000)
 
@@ -78,6 +81,13 @@
   (global-set-key (kbd "C-<f4>") 'highlight-symbol-next)
   (global-set-key (kbd "C-<f2>") 'highlight-symbol-prev)
   (global-set-key (kbd "M-s h d") 'highlight-symbol-remove-all)
+  )
+
+(use-package magit
+  :ensure t
+  :init
+  (require 'magit)
+  (global-set-key (kbd "C-x g") 'magit-status)
   )
 
 (provide 'setup-global-other)
