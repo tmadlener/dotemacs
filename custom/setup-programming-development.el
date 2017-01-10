@@ -126,5 +126,26 @@
       sh-indent-for-case-label 0
       sh-indent-for-case-alt '+)
 
+
+;; yasnippet setup
+(use-package yasnippet
+  :ensure t
+  :pin melpa
+  :init
+  (require 'yasnippet)
+  (yas-reload-all)
+  (add-hook 'prog-mode-hook #'yas-minor-mode)
+  )
+
+;; helm-support for yasnippet
+(use-package helm-c-yasnippet
+  :ensure t
+  :init
+  (require 'yasnippet)
+  (require 'helm-c-yasnippet)
+  (global-set-key (kbd "C-c y") 'helm-yas-complete)
+  (yas-load-directory "~/.emacs.d/snippets/")
+  )
+
 (provide 'setup-programming-development)
 ;;; setup-programming-development.el ends here

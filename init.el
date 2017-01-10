@@ -52,7 +52,7 @@
  '(flycheck-display-errors-function (function flycheck-pos-tip-error-messages))
  '(package-selected-packages
    (quote
-    (magit use-package crux smartparens smartparens-config monokai-theme color-theme flycheck-tip flycheck auctex company-c-headers helm-descbinds company))))
+    (helm-c-yasnippet yasnippet magit use-package crux smartparens smartparens-config monokai-theme color-theme flycheck-tip flycheck auctex company-c-headers helm-descbinds company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
