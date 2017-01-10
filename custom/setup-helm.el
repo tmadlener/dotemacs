@@ -24,12 +24,13 @@
   (define-key minibuffer-local-map (kbd "C-c C-l") 'helm-mini-buffer-history) ; helm interface to minibuffer history
 
   (setq helm-split-window-in-side-p t ; open helm buffer inside current window
-	;; move to end or beginning of source when reaching top or bottom of source
-	helm-move-to-line-cycle-in-source t
-	;; search for library in 'require and 'declare-function sexp
-	helm-ff-search-library-in-sexp t
-	helm-scroll-amount 8 ; scroll 8 lines other window using M-<next> / M-<prior>
-	helm-ff-file-name-history-use-recentf t)
+        ;; move to end or beginning of source when reaching top or bottom of source
+        helm-move-to-line-cycle-in-source t
+        ;; search for library in 'require and 'declare-function sexp
+        helm-ff-search-library-in-sexp t
+        helm-scroll-amount 8 ; scroll 8 lines other window using M-<next> / M-<prior>
+        helm-ff-file-name-history-use-recentf t
+        helm-ff-tramp-not-fancy nil)
 
   ;; turn on helm-mode globally
   (helm-mode 1)
@@ -37,7 +38,7 @@
   ;; define size of helm-window (equal values for min and max for constant size of window
   (helm-autoresize-mode t)
   (setq helm-autoresize-max-height 30
-	helm-autoresize-min-height 30)
+        helm-autoresize-min-height 30)
 
   ;; key-bindings
   (global-set-key (kbd "M-x") 'helm-M-x) ;; use helm-M-x for M-x
