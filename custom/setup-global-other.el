@@ -90,5 +90,47 @@
   (global-set-key (kbd "C-x g") 'magit-status)
   )
 
+
+;; ibuffer setup; automatic grouping by mode
+(setq ibuffer-saved-filter-groups
+      '(("default"
+         ("c++" (mode . c++-mode))
+         ("python" (mode . python-mode))
+         ("shell-scripts" (mode . shell-script-mode))
+         ("json" (or (mode . javascript-mode)
+                     (filename . ".json")))
+         ("Helm" (mode . helm-major-mode))
+         ("emacs-config" (or (filename . ".emacs.d")))
+         ))
+      )
+
+
+
+(add-hook 'ibuffer-mode-hook
+          '(lambda ()
+             (ibuffer-switch-to-saved-filter-groups "default")
+             (ibuffer-auto-mode 1)))
+
+;; collapse some of the groups by default via advicing ibuffer
+(defvar ibuffer-default-collapsed-groups (list "Helm" "Default"))
+
+(defadvice ibuffer (after collapse-helm)
+  (dolist (group ibuffer-default-collapsed-groups)
+    (progn
+      (goto-char 1)
+      (when (search-forward (concat "[ " group " ]") (point-max) t)
+        (progn
+          (move-beginning-of-line nil)
+          (ibuffer-toggle-filter-group)
+          )
+        )
+      )
+    )
+  (goto-char 1)
+  (search-forward "[ " (point-max) t)
+  )
+
+(ad-activate 'ibuffer)
+
 (provide 'setup-global-other)
 ;;; setup-global-other.el ends here
