@@ -40,8 +40,7 @@
 (setq gc-cons-threshold 100000000)
 
 ;; saveplace remembers the location in a file when saving
-(require 'saveplace)
-(toggle-save-place-globally 1)
+(save-place-mode 1)
 
 ;; go-to-address-mode, should make URLs clickable in a buffer
 (add-hook 'prog-mode-hook 'goto-address-mode)
