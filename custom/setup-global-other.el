@@ -13,6 +13,10 @@
 ;; setup ssh as default mode for tramp
 (setq tramp-default-method "ssh")
 
+;; no backup for remote files!
+(add-to-list 'backup-directory-alist
+             (cons tramp-file-name-regexp nil))
+
 ;; change large file warning threshold to 100 MB
 (setq large-file-warning-threshold 100000000)
 
@@ -22,7 +26,7 @@
     (make-directory backup-directory t))
 ;; backup settings
 (setq
- make-backup-files t ; backup a file the first time it is saved
+ make-backup-files nil ; backup a file the first time it is saved
  backup-directory-alist `((".*" . ,backup-directory)) ; save backup files in defined directory
  backup-by-copying t ; copy current file into backup dir
  version-control t ; version number of backup files
@@ -95,11 +99,13 @@
       '(("default"
          ("c++" (mode . c++-mode))
          ("python" (mode . python-mode))
-         ("shell-scripts" (mode . shell-script-mode))
+         ("shell-scripts" (mode . sh-mode))
          ("json" (or (mode . javascript-mode)
                      (filename . ".json")))
          ("Helm" (mode . helm-major-mode))
          ("emacs-config" (or (filename . ".emacs.d")))
+         ("latex" (mode . latex-mode))
+         ("org" (mode . org-mode))
          ))
       )
 

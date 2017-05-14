@@ -4,6 +4,7 @@
 
 (setq-default TeX-PDF-mode t)
 
+(require 'tex)
 (defun auctex-hook-function()
   (setq TeX-auto-save t)
   (setq TeX-parse-self t) ;; parse document
@@ -14,11 +15,11 @@
   (message "auctec-hook-function called")
   )
 
-(add-hook 'LateX-mode-hook 'auctex-hook-function)
-(add-hook 'LateX-mode-hook 'LaTeX-math-mode)
-(add-hook 'Latex-mode-hook 'turn-on-reftex)
+(add-hook 'LaTeX-mode-hook 'auctex-hook-function)
+(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(add-hook 'LaTeX-mode-hook #'yas-minor-mode)
 
-(require 'tex)
 (TeX-global-PDF-mode t)
 (setq TeX-save-query nil) ;; auto save on tex-command
 

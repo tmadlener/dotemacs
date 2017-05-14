@@ -37,5 +37,14 @@
   :init (load-theme 'monokai t)
   )
 
+;; make ediff split horizontally instead of vertically
+;; unless the frame is to narrow, then display horizontally
+(require 'ediff)
+(setq ediff-split-window-function (if (> (frame-width) 150)
+                                      'split-window-horizontally
+                                    'split-window-vertically))
+
+
+
 (provide 'setup-faces-ui)
 ;;; setup-faces-ui.el ends here

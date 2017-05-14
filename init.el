@@ -39,7 +39,7 @@
 (require 'setup-faces-ui)
 (require 'setup-global-other)
 (require 'setup-aliases)
-
+(require 'setup-functions)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -61,3 +61,4 @@
  )
 
 ;;; init.el ends here
+(put 'narrow-to-region 'disabled nil)
